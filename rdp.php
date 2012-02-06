@@ -25,6 +25,6 @@ disable themes:i:1
 disable cursor setting:i:0
 bitmapcachepersistenable:i:1
 full address:s:<?php echo $_GET['server']. "\n"?>
-domain:s:<?php echo $_GET['domain']. "\n"?>
-username:s:<?php echo $_GET['username']. "\n"?>
-password 51:b:<?php echo $_GET['password']. "\n"?>
+<?php if (!empty($_GET['domain'])) echo "domain:s:".$_GET['domain']."\n" ?>
+<?php if (!empty($_GET['username'])) echo "username:s:".$_GET['username']."\n" ?>
+<?php if (!empty($_GET['password'])) echo "password 51:b:".$_GET['password']."\n" ?>
