@@ -1,0 +1,7 @@
+base	rdplink
+author	Justin Shepard
+email	jshepard@cyberdynamic.net
+date	2012-05-05
+name	RDP Link Plugin
+desc	Enables you to create links that automagically generate and open Remote Desktop Connection configurations.
+url		http://www.dokuwiki.org/plugin:rdplink
