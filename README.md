@@ -12,12 +12,7 @@ Within the RdpEncrypt folder are two utilities you can use to generate an encryp
 Installation
 ============
 
-1. Open up a shell and navigate to the `lib/plugins` directory of your dokuwiki installation.
-2. Download and install the plugin:
-      - Execute `git clone https://github.com/justinshepard/rdplink.git rdplink`
-      - OR: Download the tarball/zipball and extract. Rename the `justinshepard-rdplink-HASH` folder to `rdplink`.
-
-***NOTE:*** This plugin cannot be installed using the Plugin Manager due to the way GitHub packages up its tarballs/zipballs.
+Paste the Zipball URL (http://github.com/justinshepard/rdplink/zipball/master) into the DokuWiki plugin manager and click "Download".
 
 License
 =======
