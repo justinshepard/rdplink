@@ -3,9 +3,9 @@ RDPLink Plugin
 
 This is a DokuWiki plugin that allows you to create links that automagically generate and open Remote Desktop Connection configurations within a DokuWiki page.
 
-Fixes and enhancements are welcome, just send me a pull request.
+Fixes and enhancements are welcome (just send me a pull request), though it should be noted that I am no longer actively developing this plugin and as such will not provide installation or troubleshooting support. Detailed plugin installation instructions are available [here](http://www.dokuwiki.org/plugin_installation_instructions).
 
-[Plugin Homepage](http://www.dokuwiki.org/plugin:rdplink)
+[RDPLink Plugin Homepage](http://www.dokuwiki.org/plugin:rdplink)
 
 Within the RdpEncrypt folder are two utilities you can use to generate an encrypted password for use with the plugin.
 
