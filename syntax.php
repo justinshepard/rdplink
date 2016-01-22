@@ -44,7 +44,7 @@
         function getType(){ return 'substition'; }
         function getSort(){ return 999; }
         function connectTo($mode) { $this->Lexer->addSpecialPattern('{rdplink:.+?}',$mode,'plugin_rdplink'); }
-        function handle($match, $state, $pos, &$handler){
+        function handle($match, $state, $pos, Doku_Handler $handler){
             switch ($state) {
               case DOKU_LEXER_SPECIAL :
                 $match = substr($match,9,-1);
@@ -59,7 +59,7 @@
             return array();
         }
      
-        function render($mode, &$renderer, $data) {
+        function render($mode, Doku_Renderer $renderer, $data) {
             if($mode == 'xhtml'){
     //            $renderer->doc .= "<a href=\"" . DOKU_URL . "lib/plugins/rdplink/rdp.php?server=" . $data['server'] . "\"><img src=\"".DOKU_URL."lib/plugins/rdplink/rdpicon.png\" />" . $data['desc'] . "</a>";
                 $renderer->doc .= "<img src=\"".DOKU_URL."lib/plugins/rdplink/rdpicon.png\" />&nbsp;<a href=\"" . DOKU_URL . "lib/plugins/rdplink/rdp.php?server=" . $data['server'] . "\">" . $data['desc'] . "</a>";
