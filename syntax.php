@@ -52,9 +52,9 @@ class syntax_plugin_rdplink extends DokuWiki_Syntax_Plugin
     public function getType() { return 'substition'; }
     public function getSort() { return 999; }
 
-    public function connectTo($mode)
+public function connectTo($mode)
     {
-        $this->Lexer->addSpecialPattern('{rdplink:.+?}', $mode, 'plugin_rdplink');
+        $this->Lexer->addSpecialPattern('{rdplink:[^}]+}', $mode, 'plugin_rdplink');
     }
 
     public function handle($match, $state, $pos, Doku_Handler $handler)
@@ -63,15 +63,20 @@ class syntax_plugin_rdplink extends DokuWiki_Syntax_Plugin
             case DOKU_LEXER_SPECIAL:
                 $match = substr($match, 9, -1);
                 $smeta = explode('|', $match, 2);
+                
+                if (!preg_match('/^[A-Za-z0-9.\-]+(:\d+)?$/', $smeta[0])) {
+                    msg('rdplink: invalid server format', -1);
+                    return [];
+                }
+                
                 if (empty($smeta[1])) {
                     $smeta[1] = $smeta[0];
                 }
-
+                    
                 return [
                     'server' => $smeta[0],
-                    'desc'   => $smeta[1],
+                    'desc' => $smeta[1]
                 ];
-                break;
         }
         return [];
     }
@@ -79,9 +84,10 @@ class syntax_plugin_rdplink extends DokuWiki_Syntax_Plugin
     public function render($mode, Doku_Renderer $renderer, $data)
     {
         if ($mode == 'xhtml') {
-            $renderer->doc .= "<img src=\"" . DOKU_URL . "lib/plugins/rdplink/rdpicon.png\" />&nbsp;<a href=\"" . DOKU_URL . "lib/plugins/rdplink/rdp.php?server=" . $data['server'] . "\">" . $data['desc'] . "</a>";
+            $url = DOKU_BASE . "lib/plugins/rdplink/rdp.php?" . buildURLparams(['server' => $data['server']]);
+            $renderer->doc .= "<img src=\"" . DOKU_BASE . "lib/plugins/rdplink/rdpicon.png\" alt=\"RDP Icon\" />&nbsp;"
+                . "<a href=\"" . $url . "\">" . hsc($data['desc']) . "</a>";
             return true;
         }
         return false;
-    }
-}
+    }}
